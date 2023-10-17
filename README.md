@@ -1,11 +1,12 @@
-# LEOPARD
-
-missing view comp***L***etion for multi-tim***E***point ***O***mics data via re***P***resentation disent***A***nglement and tempo***R***al knowle***D***ge transfer
+# LEOPARD: missing view comp<ins>l</ins>etion for multi-tim<ins>e</ins>point <ins>o</ins>mics data via re<ins>p</ins>resentation disent<ins>a</ins>nglement and tempo<ins>r</ins>al knowle<ins>d</ins>ge transfer
 
 ***Thank you for checking our LEOPARD!***
+
 ***Any questions regarding LEOPARD please drop an email to siyu.han@tum.de or post it to [issues](https://github.com/HAN-Siyu/LEOPARD/issues).***
 
-## Environment
+[//]: # (Longitudinal multi-view omics data offer unique insights into the temporal dynamics of individual-level physiology, which provides opportunities to advance personalized healthcare. However, the common occurrence of incomplete views makes extrapolation tasks difficult, and there is a lack of tailored methods for this critical issue. Here, we introduce LEOPARD, an innovative approach specifically designed to complete missing views in multi-timepoint omics data. By disentangling longitudinal omics data into content and temporal representations, LEOPARD transfers temporal knowledge to omics-specific content, thereby completing missing views. Compared to conventional imputation methods, LEOPARD yields the most robust results across three benchmark datasets. LEOPARD-imputed data also achieve the best agreement with the observed data in our analyses for age-associated metabolites detection and chronic kidney disease prediction. Our work takes the first step toward a generalized treatment of missing views in longitudinal omics data, enabling comprehensive exploration of temporal dynamics and providing valuable insights into personalized healthcare.)
+
+## Habitat
 Specific environment settings are required to run LEOPARD.
 
 - python: 3.79
@@ -126,4 +127,4 @@ If you use the code or data in this repository, please cite:
 
 - [TIGER](https://github.com/HAN-Siyu/TIGER): technical variation elimination for metabolomics data using ensemble learning architecture
 - [LION](https://github.com/HAN-Siyu/LION): an integrated R package for effective prediction of lncRNA/ncRNA–protein interaction
-- LEOPARD (this work): missing view completion for multi-timepoints omics data via representation disentanglement and temporal knowledge transfer
+- LEOPARD (this work): missing view completion for multi-timepoint omics data via representation disentanglement and temporal knowledge transfer
