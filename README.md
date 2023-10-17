@@ -111,7 +111,8 @@ trainer.fit(your_leopard)
 - src/layers.py: basic layers used to build LEOPARD
 - src/model.py: class of LEOPARD architecture
 - src/train.py: LightningModule of LEOPARD training
-- src/utils.py: some utility functions for data processing.
+- src/utils.py: some utility functions for data processing
+- data/MGH_COVID: benchmark dataset constructed from the [MGH COVID study](http://dx.doi.org/10.17632/nf853r8xsj)
 
 ## Cite This Work
 
