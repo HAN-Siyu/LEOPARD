@@ -13,7 +13,7 @@ Longitudinal multi-view omics data offer unique insights into the temporal dynam
 Specific environment settings are required to run LEOPARD.
 
 - python: 3.79
-- cuda: 11.3
+- cuda (if use GPU): 11.3
 - pytorch: 1.11.10
 - pytorch_lightning: 1.6.4
 - tensorboard: 2.10.0
