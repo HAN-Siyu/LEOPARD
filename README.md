@@ -74,20 +74,20 @@ trainer.fit(your_leopard)
 - `post_layers_viewA`, `post_layers_viewB`: post-layers for view A and view B to convert embeddings back to data in original dimension. Default: `[64]`, `[64]`
 
 - `encoder_content_layers`: layers for the content encoder. A list where the length indicates the total number of layers, and each element specifies the size of the corresponding layer. Default: `[64, 64, 64]`
-- `encoder_content_norm`: a list indicates if using normalization for the layers in the content encoder. Supported `"instance"`, `"batch"`, and `"none"`. Default: `['instance', 'instance', 'instance']`
+- `encoder_content_norm`: a list indicates if using normalization for the layers in the content encoder. Supported `"instance"`, `"batch"`, and `"none"`. Default: `["instance", "instance", "instance"]`
 - `encoder_content_dropout`: a list specifies dropout rate for each layer in the content encoder. Default: `[0, 0, 0]`
     
 - `encoder_temporal_layers`: layers for the temporal encoder. Default: `[64, 64, 64]`
-- `encoder_temporal_norm`: if use normalization for the layers in the temporal encoder? Supported `"instance"`, `"batch"`, and `"none"`. Default: `['none', 'none', 'none']`
+- `encoder_temporal_norm`: if use normalization for the layers in the temporal encoder? Supported `"instance"`, `"batch"`, and `"none"`. Default: `["none", "none", "none"]`
 - `encoder_temporal_dropout`: dropout rate for each layer in the temporal encoder. Default: `[0, 0, 0]`
     
 - `generator_block_num`: how many layers/blocks used for the generator. Default: `3`
-- `generator_norm`: if use normalization for the layers in the generator? Supported `"instance"`, `"batch"`, and `"none"`. Default: `['none', 'none', 'none']`
+- `generator_norm`: if use normalization for the layers in the generator? Supported `"instance"`, `"batch"`, and `"none"`. Default: `["none", "none", "none"]`
 - `generator_dropout`: dropout rate for each layer in the generator. Default: `[0, 0, 0]`
 - `merge_mode`: re-entangle content and temporal representations by concatenation (`"concat"`) or AdaIN (`"adain"`)? Default: `"adain"`
     
 - `discriminator_layers`: layers for the multi-task discriminator. Default: `[128, 128]`
-- `discriminator_norm`: if use normalization for the layers in the discriminator? Supported `"instance"`, `"batch"`, and `"none"`. Default: `['none', 'none']`
+- `discriminator_norm`: if use normalization for the layers in the discriminator? Supported `"instance"`, `"batch"`, and `"none"`. Default: `["none", "none"]`
 - `discriminator_dropout`: dropout rate for each layer in the discriminator. Default: `[0, 0]`
     
 - `reconstruction_loss`: use `"MSE"` or `"MAE"` to compute reconstruction loss? Default: `"MSE"`
@@ -97,7 +97,7 @@ trainer.fit(your_leopard)
     
 - `lr_G`, `lr_D`: learning rate for generator process (encoders and generator) and discrimination process (discriminator). You need to tune this for your own datasets. Default: `0.005`, `0.05`
 - `b1_G`, `b1_D`: beta_1 for Adam Optimizer. Default: `0.9`, `0.9`
-- `lr_scheduler_G`, `lr_scheduler_D`: `"none"` or use `"LambdaLR"` or `"SGDR"` as lr scheduler? Default: `none`, `none`
+- `lr_scheduler_G`, `lr_scheduler_D`: `"none"` or use `"LambdaLR"` or `"SGDR"` as lr scheduler? Default: `"none"`, `"none"`
     
 - `use_projection_head`: if use projection head for contrastive learning? Default: `False`
 - `projection_output_size`: set output size of projection head. Ignored if `use_projection_head=False`.  Default: `0`
