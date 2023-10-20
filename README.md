@@ -10,15 +10,19 @@ Longitudinal multi-view omics data offer unique insights into the temporal dynam
 
 
 ## Habitat
-Specific environment settings are required to run LEOPARD.
+
+Specific environment settings are required to run LEOPARD. The following packages are used in our stduy.
 
 - python: 3.79
+- numpy: 1.23.5
+- pandas: 1.4.4
 - pytorch: 1.11.10
 - pytorch_lightning: 1.6.4
 - tensorboard: 2.10.0
 - cuda (if use GPU): 11.3
 
 ## How to Train Your LEOPARD
+
 The architecture of LEOPARD is fully customizable and supports data of two views. LEOPARD is better to run in an interactive mode. Examples are provided in `main.py`.
 
 ```python                       
@@ -106,7 +110,8 @@ trainer.fit(your_leopard)
 
 ## Script Files
 
-- main.py: examples for running LEOPARD
+- manual.ipynb: a brief instruction (jupyter-notebook) for training LEOPARD
+- main.py: code in manual.ipynb provided in R script format without markdown texts
 - src/data.py: dataset preparation
 - src/layers.py: basic layers used to build LEOPARD
 - src/model.py: class of LEOPARD architecture
