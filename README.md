@@ -6,7 +6,7 @@ Longitudinal multi-view omics data offer unique insights into the temporal dynam
 
 *Thank you for checking our LEOPARD!*
 
-*Any questions regarding LEOPARD please drop an email to siyu.han@tum.de or post it to [issues](https://github.com/HAN-Siyu/LEOPARD/issues).*
+*Any questions regarding LEOPARD please drop an email to the zookeeper Siyu Han (siyu.han@tum.de) or post it to [issues](https://github.com/HAN-Siyu/LEOPARD/issues).*
 
 
 ## Habitat
@@ -23,7 +23,7 @@ Specific environment settings are required to run LEOPARD. The following package
 
 ## How to Train Your LEOPARD
 
-The architecture of LEOPARD is fully customizable and supports data of two views. LEOPARD is better to run in an interactive mode. Examples are provided in `main.py`.
+The architecture of LEOPARD is fully customizable and supports data of two views. LEOPARD is better to run in an interactive mode. See instruction in the juper-notebook file "manual.ipynb".
 
 ```python                       
 your_leopard = TrainLEOPARD(train_set, val_set, est_set,
