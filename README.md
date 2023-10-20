@@ -11,7 +11,7 @@ Longitudinal multi-view omics data offer unique insights into the temporal dynam
 
 ## Habitat
 
-Specific environment settings are required to run LEOPARD. The following packages are used in our stduy.
+Specific environment settings are required to run LEOPARD. The following packages are used in our stduy:
 
 - python: 3.79
 - numpy: 1.23.5
