@@ -24,7 +24,7 @@ Specific environment settings are required to run LEOPARD. The following package
 
 ## How to Train Your LEOPARD
 
-The architecture of LEOPARD is fully customizable and supports data of two views. LEOPARD is better to run in an interactive mode. See instruction in the juper-notebook file "manual.ipynb".
+The architecture of LEOPARD is fully customizable and supports data of two views. LEOPARD is better to run in an interactive editors (Jupyter Notebook, PyCharm, Spyder, etc). Instruction for how to train a LEOPARD is provided in the juper-notebook file "manual.ipynb".
 
 
 ## Script Files
