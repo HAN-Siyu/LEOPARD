@@ -16,6 +16,7 @@ Specific environment settings are required to run LEOPARD. The following package
 - python: 3.79
 - numpy: 1.23.5
 - pandas: 1.4.4
+- scikit-learn: 1.0.2
 - pytorch: 1.11.10
 - pytorch_lightning: 1.6.4
 - tensorboard: 2.10.0
