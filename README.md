@@ -22,6 +22,7 @@ Specific environment settings are required to run LEOPARD. The following package
 - tensorboard: 2.10.0
 - cuda (if use GPU): 11.3
 
+
 ## How to Train Your LEOPARD
 
 The architecture of LEOPARD is fully customizable and supports data of two views. LEOPARD is better to run in an interactive editors (Jupyter Notebook, PyCharm, Spyder, etc). Instruction for how to train a LEOPARD is provided in the juper-notebook file "manual.ipynb".
@@ -29,14 +30,17 @@ The architecture of LEOPARD is fully customizable and supports data of two views
 
 ## Script Files
 
-- manual.ipynb: a brief instruction (jupyter-notebook) for training LEOPARD
-- main.py: code in manual.ipynb provided in R script format without markdown texts
+- manual.ipynb: a brief instruction (jupyter-notebook, with Python kernel) for training LEOPARD
+- plot.ipynb: a jupyter-notebook (with R kernel) for reproducing the plots
+- main.py: code in manual.ipynb provided in Python script format without markdown texts
 - src/data.py: dataset preparation
 - src/layers.py: basic layers used to build LEOPARD
 - src/model.py: class of LEOPARD architecture
 - src/train.py: LightningModule of LEOPARD training
 - src/utils.py: some utility functions for data processing
 - data/MGH_COVID: benchmark dataset constructed from the [MGH COVID study](http://dx.doi.org/10.17632/nf853r8xsj)
+- data/plotData: data used to generate the plots in our study
+
 
 ## Cite This Work
 
@@ -50,6 +54,7 @@ If you use the code or data in this repository, please cite:
   year={2023}
 }
 ```
+
 
 ## Our Big Cat Zoo
 
