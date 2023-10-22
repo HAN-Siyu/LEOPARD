@@ -1,0 +1,26 @@
+"Method","Metric","Performance"
+"cGAN","Sensitivity",0.5
+"mice","Sensitivity",0.5
+"missForest","Sensitivity",0.583333333333333
+"groundtruth","Sensitivity",0.777777777777778
+"LEOPARD","Sensitivity",0.666666666666667
+"cGAN","Specificity",0.545454545454545
+"mice","Specificity",0.602272727272727
+"missForest","Specificity",0.5625
+"groundtruth","Specificity",0.778409090909091
+"LEOPARD","Specificity",0.664772727272727
+"cGAN","Precision",0.183673469387755
+"mice","Precision",0.204545454545455
+"missForest","Precision",0.214285714285714
+"groundtruth","Precision",0.417910447761194
+"LEOPARD","Precision",0.289156626506024
+"cGAN","Balanced Accuracy",0.522727272727273
+"mice","Balanced Accuracy",0.551136363636364
+"missForest","Balanced Accuracy",0.572916666666667
+"groundtruth","Balanced Accuracy",0.778093434343434
+"LEOPARD","Balanced Accuracy",0.665719696969697
+"cGAN","F1 Score",0.26865671641791
+"mice","F1 Score",0.290322580645161
+"missForest","F1 Score",0.313432835820895
+"groundtruth","F1 Score",0.543689320388349
+"LEOPARD","F1 Score",0.403361344537815
