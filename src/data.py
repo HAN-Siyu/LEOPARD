@@ -1,8 +1,8 @@
-import numpy as np
 from torch import from_numpy
 from torch.utils.data import Dataset
 from random import seed
 from random import sample
+from src.utils import *
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import RobustScaler
 from sklearn.preprocessing import MinMaxScaler
@@ -15,9 +15,9 @@ def load_split_data(data_dir, valSet_ratio, obsNum, set_seed):
 
     valid_idx = None
     seed(set_seed)
-
+    print("+ loading data:")
     for data_part in ["vA_t1", "vA_t2", "vB_t1", "vB_t2"]:
-        print(data_part)
+        print("  -", data_part)
         dataTrain = pd.read_csv(os.path.join(data_dir, data_part + "_train" + ".csv", ),
                                 index_col=["label", "zz_nr"])
 
@@ -72,7 +72,7 @@ def scale_data(dataSplit_raw_dict, use_scaler):
         data_scaler = MinMaxScaler
     else:
         raise Exception('scale should be one of "minmax", "robust", or "standard"!')
-    print("- Data scaling using " + use_scaler + ".")
+    print("+ Data scaling using " + use_scaler + " scaler:")
 
     vA_allTrain = pd.concat([trainSplit_raw['vA_t1'], trainSplit_raw['vA_t2']], axis=0)
     vB_allTrain = pd.concat([trainSplit_raw['vB_t1'],
@@ -87,12 +87,11 @@ def scale_data(dataSplit_raw_dict, use_scaler):
     testSplit_scaled  = {"observation_map": testSplit_raw["observation_map"]}
 
     for data_part in ["vA_t1", "vA_t2", "vB_t1", "vB_t2"]:
-        print(data_part)
         if data_part[0:2] == "vA":
-            print("use scaler_vA")
+            print("  -", data_part + ": use scaler_vA")
             use_this_scaler = scaler_vA
         else:
-            print("use scaler_vB")
+            print("  -", data_part + ": use scaler_vB")
             use_this_scaler = scaler_vB
         trainSplit_scaled[data_part] = use_this_scaler.transform(trainSplit_raw[data_part].to_numpy())
         validSplit_scaled[data_part] = use_this_scaler.transform(validSplit_raw[data_part].to_numpy())
@@ -154,7 +153,6 @@ class OmicsDataset(Dataset):
 
 def prepare_dataset(data_dir="data/MGH_COVID", valSet_ratio=0.2, obsNum=0, use_scaler="standard", set_seed=1):
     dataSplit_raw = load_split_data(data_dir=data_dir,
-                                    benchmark_data=benchmark_data,
                                     valSet_ratio=valSet_ratio, obsNum=obsNum,
                                     set_seed=set_seed)
     dataSplit_scaled = scale_data(dataSplit_raw_dict=dataSplit_raw, use_scaler=use_scaler)
