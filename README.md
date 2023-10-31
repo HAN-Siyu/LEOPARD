@@ -42,7 +42,7 @@ The architecture of LEOPARD is fully customizable and supports data of two views
 - data/: data for reproducing our results and figures
   - MGH_COVID: benchmark dataset constructed from the [MGH COVID study](http://dx.doi.org/10.17632/nf853r8xsj)
   - MGH_COVID_imputed: imputation results of the test set of the MGH COVID dataset, obtained from LEOPARD, mice, missForest, and cGAN (under obsNum = 0, 25, 50, and 100)
-  - plotData: data used to generate the plots in our study
+  - plotData: data used to reproduce the plots in our study
 
 
 ## Cite This Work
