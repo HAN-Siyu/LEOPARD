@@ -32,14 +32,17 @@ The architecture of LEOPARD is fully customizable and supports data of two views
 
 - manual.ipynb: a brief instruction (jupyter-notebook, with Python kernel) for training LEOPARD
 - plot.ipynb: a jupyter-notebook (with R kernel) for reproducing the plots
-- main.py: code in manual.ipynb provided in Python script format without markdown texts
-- src/data.py: dataset preparation
-- src/layers.py: basic layers used to build LEOPARD
-- src/model.py: class of LEOPARD architecture
-- src/train.py: LightningModule of LEOPARD training
-- src/utils.py: some utility functions for data processing
-- data/MGH_COVID: benchmark dataset constructed from the [MGH COVID study](http://dx.doi.org/10.17632/nf853r8xsj)
-- data/plotData: data used to generate the plots in our study
+- example.py: examples in Python to reproduce LEOPARD's imputation results of the MGH COVID dataset
+- src/: scripts for building LEOPARD
+  - data.py: dataset preparation
+  - layers.py: basic layers used to build LEOPARD
+  - model.py: class of LEOPARD architecture
+  - train.py: LightningModule of LEOPARD training
+  - utils.py: some utility functions for data processing
+- data/: data for reproducing our results and figures
+  - MGH_COVID: benchmark dataset constructed from the [MGH COVID study](http://dx.doi.org/10.17632/nf853r8xsj)
+  - MGH_COVID_imputed: imputation results of the test set of the MGH COVID dataset, obtained from LEOPARD, mice, missForest, and cGAN (under obsNum = 0, 25, 50, and 100)
+  - plotData: data used to generate the plots in our study
 
 
 ## Cite This Work
