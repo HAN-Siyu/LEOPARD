@@ -2,7 +2,7 @@
 
 **Missing view comp<ins>l</ins>etion for multi-tim<ins>e</ins>point <ins>o</ins>mics data via re<ins>p</ins>resentation disent<ins>a</ins>nglement and tempo<ins>r</ins>al knowle<ins>d</ins>ge transfer**
 
-Longitudinal multi-view omics data offer unique insights into the temporal dynamics of individual-level physiology, which provides opportunities to advance personalized healthcare. However, the common occurrence of incomplete views makes extrapolation tasks difficult, and there is a lack of tailored methods for this critical issue. Here, we introduce LEOPARD, an innovative approach specifically designed to complete missing views in multi-timepoint omics data. By disentangling longitudinal omics data into content and temporal representations, LEOPARD transfers temporal knowledge to omics-specific content, thereby completing missing views. Compared to conventional imputation methods, LEOPARD yields the most robust results across three benchmark datasets. LEOPARD-imputed data also achieve the best agreement with the observed data in our analyses for age-associated metabolites detection and chronic kidney disease prediction. Our work takes the first step toward a generalized treatment of missing views in longitudinal omics data, enabling comprehensive exploration of temporal dynamics and providing valuable insights into personalized healthcare.
+Longitudinal multi-view omics data offer unique insights into the temporal dynamics of individual-level physiology, which provides opportunities to advance personalized healthcare. However, the common occurrence of incomplete views makes extrapolation tasks difficult, and there is a lack of tailored methods for this critical issue. Here, we introduce LEOPARD, an innovative approach specifically designed to complete missing views in multi-timepoint omics data. By disentangling longitudinal omics data into content and temporal representations, LEOPARD transfers the temporal knowledge to the omics-specific content, thereby completing missing views. The effectiveness of LEOPARD is validated on three benchmark datasets constructed with data from the MGH COVID study and the KORA cohort, spanning periods from 3 days to 14 years. Compared to conventional imputation methods, such as missForest, PMM, GLMM, and cGAN, LEOPARD yields the most robust results across the benchmark datasets. LEOPARD-imputed data also achieve the highest agreement with observed data in our analyses for age-associated metabolites detection, estimated glomerular filtration rate-associated proteins identification, and chronic kidney disease prediction. Our work takes the first step toward a generalized treatment of missing views in longitudinal omics data, enabling comprehensive exploration of temporal dynamics and providing valuable insights into personalized healthcare.
 
 ***Thank you for checking our LEOPARD @BigCatZoo!***
 
@@ -51,7 +51,7 @@ To cite LEOPARD in publications, please use:
 
 ```bibtex
 @article{han2023missing,
-  title={Missing view completion for multi-timepoints omics data via representation disentanglement and temporal knowledge transfer},
+  title={LEOPARD: missing view completion for multi-timepoint omics data via representation disentanglement and temporal knowledge transfer},
   author={Han, S and Yu, S and Shi, M and Harada, M and Ge, J and Lin, J and Prehn, C and Petrera, A and Li, Y and Sam, F and others},
   journal={biorxiv preprint doi:10.1101/2023.09.26.559302},
   year={2023}
