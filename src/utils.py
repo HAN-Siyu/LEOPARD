@@ -16,10 +16,10 @@ class LambdaLR:
 
 
 class ExceptionObsNum(ValueError):  # raised if data conversion fails
-    def __init__(self, a, b):
-        print('The obsNum should be >= 0 and <= the number of observed samples in the training split.\n',
-              'Your obsNum is ', a,
-              '.\nThe number of observed samples in the training split is ',
+    def __init__(self, varLabel, zeroBound, a, b):
+        print('The ', varLabel, ' should be ', zeroBound, ' and <= the number of available training samples.\n',
+              'Your ', varLabel, ' is ', a,
+              '.\nThe number of available training samples in this split is ',
               b, "!", sep="")
 
 
