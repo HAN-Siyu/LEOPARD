@@ -100,8 +100,10 @@ class TrainLEOPARD(pl.LightningModule):
         self.scaler_viewB = scaler_viewB
 
         if reconstruction_loss == 'MAE':
+            self.loss_F_reconstruction_noReduction = nn.L1Loss(reduction="none")
             self.loss_F_reconstruction = nn.L1Loss()
         elif reconstruction_loss == 'MSE':
+            self.loss_F_reconstruction_noReduction = nn.MSELoss(reduction="none")
             self.loss_F_reconstruction = nn.MSELoss()
         else:
             raise Exception('reconstruct_loss only supports "MAE" or "MSE"!')
@@ -277,6 +279,11 @@ class TrainLEOPARD(pl.LightningModule):
         raw_viewA_time2 = batch['batch_viewA_time2']
         raw_viewB_time1 = batch['batch_viewB_time1']
 
+        mask_viewA_time1 = batch['mask_viewA_time1'].bool().detach()
+        mask_viewA_time2 = batch['mask_viewA_time2'].bool().detach()
+        mask_viewB_time1 = batch['mask_viewB_time1'].bool().detach()
+        mask_viewB_time2 = batch['mask_viewB_time2'].bool().detach()
+
         content_viewA_time1, temporal_viewA_time1 = self.forward(x=raw_viewA_time1, view='viewA',
                                                                  timePoint='time1')
         content_viewA_time2, temporal_viewA_time2 = self.forward(x=raw_viewA_time2, view='viewA',
@@ -312,20 +319,20 @@ class TrainLEOPARD(pl.LightningModule):
         # raw_library acts like a reference. Generated data will be compared with the data in raw_library.
         raw_library = {
             "viewA": {
-                "time1": {"data": raw_viewA_time1,
+                "time1": {"data": raw_viewA_time1, "mask": mask_viewA_time1,
                           "content": content_viewA_time1, "temporal": temporal_viewA_time1,
                           "view": "viewA", "timePoint": "time1"},
 
-                "time2": {"data": raw_viewA_time2,
+                "time2": {"data": raw_viewA_time2, "mask": mask_viewA_time2,
                           "content": content_viewA_time2, "temporal": temporal_viewA_time2,
                           "view": "viewA", "timePoint": "time2"}
             },
             "viewB": {
-                "time1": {"data": raw_viewB_time1,
+                "time1": {"data": raw_viewB_time1, "mask": mask_viewB_time1,
                           "content": content_viewB_time1, "temporal": temporal_viewB_time1,
                           "view": "viewB", "timePoint": "time1"},
 
-                "time2": {"data": data_viewB_time2,
+                "time2": {"data": data_viewB_time2, "mask": mask_viewB_time2,
                           "content": content_viewB_time2_ref, "temporal": temporal_viewB_time2_ref,
                           "view": "viewB", "timePoint": "time2"}
             }
@@ -401,7 +408,9 @@ class TrainLEOPARD(pl.LightningModule):
                                                                        timePoint=current_temporal['timePoint'])
 
                 ###### reconstruction loss ######
-                loss_reconstruction_sum += self.loss_F_reconstruction(generated_data, current_target['data'])
+                loss_reconstruction_current = self.loss_F_reconstruction_noReduction(generated_data, current_target['data'])
+                loss_reconstruction_mask = loss_reconstruction_current[current_target['mask']]
+                loss_reconstruction_sum += torch.mean(loss_reconstruction_mask)
 
                 ###### representation loss ######
                 loss_representation_content_sum += self.loss_F_reconstruction(content_generation,
