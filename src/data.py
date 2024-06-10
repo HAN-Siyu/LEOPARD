@@ -53,24 +53,26 @@ def load_split_data(data_dir, valSet_ratio, trainNum, obsNum, set_seed,
     seed(set_seed)
     np.random.seed(set_seed)
 
-    save_folder_path = os.path.join(save_data_dir, "obsNum_" + str(obsNum),
-                                    "_seed_" + str(set_seed),
-                                    )
-    if not os.path.exists(save_folder_path):
-        os.makedirs(save_folder_path)
+    if save_data_dir is not None:
+        save_folder_path = os.path.join(save_data_dir, "obsNum_" + str(obsNum),
+                                        "seed_" + str(set_seed),
+                                        )
+        if not os.path.exists(save_folder_path):
+            os.makedirs(save_folder_path)
 
     for data_part in combined_dict.keys():
-        print("  -", data_part + ":", combined_dict[data_part])
-        dataTest = pd.read_csv(os.path.join(data_dir, combined_dict[data_part] + "_test" + ".csv", ),
-                               index_col=["label", "zz_nr"])
-        testSplit_raw[data_part] = dataTest
+        print("  -load", combined_dict[data_part] + " as", data_part)
+        path_trainVal = os.path.join(data_dir, combined_dict[data_part] + "_train" + ".csv")
+        path_test     = os.path.join(data_dir, combined_dict[data_part] + "_test" + ".csv")
 
-        dataTrainVal = pd.read_csv(os.path.join(data_dir, combined_dict[data_part] + "_train" + ".csv", ),
-                                   index_col=["label", "zz_nr"])
+        dataTrainVal = pd.read_csv(path_trainVal, index_col=["label", "zz_nr"])
+        dataTest     = pd.read_csv(path_test,     index_col=["label", "zz_nr"])
+
+        testSplit_raw[data_part] = dataTest
 
         if valid_idx is None:
             valid_idx = sample(range(dataTrainVal.shape[0]), int(dataTrainVal.shape[0] * valSet_ratio))
-            if save_idx:
+            if save_idx and save_data_dir is not None:
                 dataTrainVal.iloc[valid_idx].index.get_level_values('zz_nr').to_frame(index=False).to_csv(
                     os.path.join(save_folder_path,
                                  "valSet_idx_trainNum_" + str(trainNum) +
@@ -87,7 +89,7 @@ def load_split_data(data_dir, valSet_ratio, trainNum, obsNum, set_seed,
             if train_idx is None:
                 if 0 < trainNum <= dataTrain.shape[0]:
                     train_idx = sample(range(dataTrain.shape[0]), trainNum)
-                    if save_idx:
+                    if save_idx and save_data_dir is not None:
                         dataTrain.iloc[train_idx].index.get_level_values('zz_nr').to_frame(index=False).to_csv(
                             os.path.join(save_folder_path,
                                          "trainSet_idx_trainNum_" + str(trainNum) +
@@ -102,32 +104,33 @@ def load_split_data(data_dir, valSet_ratio, trainNum, obsNum, set_seed,
         trainSplit_raw[data_part] = dataTrain_select
 
     trainSplit_raw["observation_map"] = np.zeros((trainSplit_raw["vB_t2"].shape[0], 1), dtype=bool)
-    observed_idx_train = np.where(~trainSplit_raw["vB_t2"].iloc[:, 0].isnull().values)[0]
-    if obsNum == "auto":
+    observed_idx_train = np.where(trainSplit_raw["vB_t2"].notna().any(axis=1).values)[0]
+
+    if obsNum == "all":
         trainSplit_raw["observation_map"][observed_idx_train] = True
     elif isinstance(obsNum, int):
         if 0 <= obsNum <= len(observed_idx_train):
             obsNum_idx = sample(observed_idx_train.tolist(), obsNum)
             trainSplit_raw["observation_map"][obsNum_idx] = True
-            if save_idx:
+            if save_idx and save_data_dir is not None:
                 obsNum_zzNr = trainSplit_raw["vB_t2"].iloc[trainSplit_raw["observation_map"]].index.get_level_values(
                     'zz_nr').to_frame(index=False)
                 obsNum_zzNr.to_csv(
                     os.path.join(save_folder_path,
                                  "obsNum_idx_trainNum_" + str(trainNum) +
-                                 "_obsNum_" + str(obsNum) + "_seed_" + str(set_seed) + ".csv"), index=False
+                                 "_obsNum_" + str(obsNum) + ".csv"), index=False
                 )
         else:
             raise ExceptionObsNum("obsNum", ">= 0", obsNum, len(observed_idx_train))
     else:
-        raise ValueError("obsNum should be 'auto' or an integer!")
+        raise ValueError("obsNum should be 'all' or an integer!")
 
     validSplit_raw["observation_map"] = np.zeros((validSplit_raw["vB_t2"].shape[0], 1), dtype=bool)
-    observed_idx_valid = np.where(~validSplit_raw["vB_t2"].iloc[:, 0].isnull().values)[0]
+    observed_idx_valid = np.where(validSplit_raw["vB_t2"].notna().any(axis=1).values)[0]
     validSplit_raw["observation_map"][observed_idx_valid] = True
 
     testSplit_raw["observation_map"] = np.zeros((testSplit_raw["vB_t2"].shape[0], 1), dtype=bool)
-    observed_idx_test = np.where(~testSplit_raw["vB_t2"].iloc[:, 0].isnull().values)[0]
+    observed_idx_test = np.where(testSplit_raw["vB_t2"].notna().any(axis=1).values)[0]
     testSplit_raw["observation_map"][observed_idx_test] = True
 
     for current_view_time in ["vA_t1", "vA_t2", "vB_t1", "vB_t2"]:

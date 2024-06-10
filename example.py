@@ -8,7 +8,8 @@ from src.train import TrainLEOPARD
 trainNum = "all"
 for obsNum in [0, 25, 50, 100]:
     loaded_data = prepare_dataset(data_dir="data/MGH_COVID", valSet_ratio=0.2, trainNum=trainNum,
-                                  obsNum=obsNum, use_scaler="standard", set_seed=1, save_data_dir=None)
+                                  obsNum=obsNum, use_scaler="standard", set_seed=1,
+                                  save_data_dir="saved_idx")
 
     my_leopard = TrainLEOPARD(train_set=loaded_data['train_set'], val_set=loaded_data['val_set'],
                               test_set=loaded_data['test_set'],
