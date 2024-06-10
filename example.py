@@ -1,16 +1,15 @@
 import torch
 import pytorch_lightning as pl
-import pandas as pd
 from pytorch_lightning.loggers import TensorBoardLogger
 
 from src.data import *
 from src.train import TrainLEOPARD
 
+trainNum = "all"
 for obsNum in [0, 25, 50, 100]:
-    loaded_data = prepare_dataset(data_dir="data/MGH_COVID", valSet_ratio=0.2,
-                                  obsNum=obsNum, set_seed=1, use_scaler="standard")
+    loaded_data = prepare_dataset(data_dir="data/MGH_COVID", valSet_ratio=0.2, trainNum=trainNum,
+                                  obsNum=obsNum, use_scaler="standard", set_seed=1, save_data_dir=None)
 
-    pl.seed_everything(seed=1, workers=True)
     my_leopard = TrainLEOPARD(train_set=loaded_data['train_set'], val_set=loaded_data['val_set'],
                               test_set=loaded_data['test_set'],
                               scaler_viewA=loaded_data['scaler_viewA'], scaler_viewB=loaded_data['scaler_viewB'],
@@ -41,18 +40,18 @@ for obsNum in [0, 25, 50, 100]:
                               weight_contrastive=0.1,
                               contrastive_temperature=0.05,
 
-                              lr_G=0.005, lr_D=0.05, b1_G=0.9, b1_D=0.9,
+                              lr_G=0.0005, lr_D=0.0005, b1_G=0.9, b1_D=0.9,
                               lr_scheduler_G='none', lr_scheduler_D='none',
 
                               use_projection_head=False, projection_output_size=0,
-                              batch_size=64, note="obsNum_" + str(obsNum))
+                              batch_size=16, note="obsNum_" + str(obsNum))
 
-    save_dir = "lightning_logs"
-    name = "experiments"
+    save_dir = os.path.join("lightning_logs", "trainNum_" + str(trainNum))
+    name = "obsNum_" + str(obsNum)
     trainer = pl.Trainer(
         enable_progress_bar=True,
         log_every_n_steps=3,
-        max_epochs=100,
+        max_epochs=199,
         gpus=1 if torch.cuda.is_available() else None,
         logger=TensorBoardLogger(save_dir=save_dir, name=name)
     )
