@@ -1,0 +1,31 @@
+"Dataset","Data_source","Metric","Performance"
+"MGH COVID proteomics","cGAN","Sensitivity",0.733333333333333
+"MGH COVID proteomics","observed","Sensitivity",0.8
+"MGH COVID proteomics","LEOPARD","Sensitivity",0.7
+"MGH COVID proteomics","missForest","Sensitivity",0.766666666666667
+"MGH COVID proteomics","PMM","Sensitivity",0.866666666666667
+"MGH COVID proteomics","LM","Sensitivity",0.8
+"MGH COVID proteomics","cGAN","Specificity",0.384615384615385
+"MGH COVID proteomics","observed","Specificity",0.538461538461538
+"MGH COVID proteomics","LEOPARD","Specificity",0.692307692307692
+"MGH COVID proteomics","missForest","Specificity",0.615384615384615
+"MGH COVID proteomics","PMM","Specificity",0.615384615384615
+"MGH COVID proteomics","LM","Specificity",0.615384615384615
+"MGH COVID proteomics","cGAN","Precision",0.733333333333333
+"MGH COVID proteomics","observed","Precision",0.8
+"MGH COVID proteomics","LEOPARD","Precision",0.84
+"MGH COVID proteomics","missForest","Precision",0.821428571428571
+"MGH COVID proteomics","PMM","Precision",0.838709677419355
+"MGH COVID proteomics","LM","Precision",0.827586206896552
+"MGH COVID proteomics","cGAN","Balanced Accuracy",0.558974358974359
+"MGH COVID proteomics","observed","Balanced Accuracy",0.669230769230769
+"MGH COVID proteomics","LEOPARD","Balanced Accuracy",0.696153846153846
+"MGH COVID proteomics","missForest","Balanced Accuracy",0.691025641025641
+"MGH COVID proteomics","PMM","Balanced Accuracy",0.741025641025641
+"MGH COVID proteomics","LM","Balanced Accuracy",0.707692307692308
+"MGH COVID proteomics","cGAN","F1 Score",0.733333333333333
+"MGH COVID proteomics","observed","F1 Score",0.8
+"MGH COVID proteomics","LEOPARD","F1 Score",0.763636363636364
+"MGH COVID proteomics","missForest","F1 Score",0.793103448275862
+"MGH COVID proteomics","PMM","F1 Score",0.852459016393443
+"MGH COVID proteomics","LM","F1 Score",0.813559322033898

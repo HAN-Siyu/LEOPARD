@@ -1,0 +1,61 @@
+"Dataset","Data_source","Metric","Performance"
+"KORA metabolomics","cGAN","Sensitivity",0.267857142857143
+"KORA metabolomics","observed","Sensitivity",0.642857142857143
+"KORA metabolomics","LEOPARD","Sensitivity",0.571428571428571
+"KORA metabolomics","missForest","Sensitivity",0.267857142857143
+"KORA metabolomics","PMM","Sensitivity",0.125
+"KORA metabolomics","LM","Sensitivity",0.160714285714286
+"KORA metabolomics","cGAN","Specificity",0.788888888888889
+"KORA metabolomics","observed","Specificity",0.8
+"KORA metabolomics","LEOPARD","Specificity",0.747222222222222
+"KORA metabolomics","missForest","Specificity",0.744444444444444
+"KORA metabolomics","PMM","Specificity",0.897222222222222
+"KORA metabolomics","LM","Specificity",0.902777777777778
+"KORA metabolomics","cGAN","Precision",0.164835164835165
+"KORA metabolomics","observed","Precision",0.333333333333333
+"KORA metabolomics","LEOPARD","Precision",0.260162601626016
+"KORA metabolomics","missForest","Precision",0.14018691588785
+"KORA metabolomics","PMM","Precision",0.159090909090909
+"KORA metabolomics","LM","Precision",0.204545454545455
+"KORA metabolomics","cGAN","Balanced Accuracy",0.528373015873016
+"KORA metabolomics","observed","Balanced Accuracy",0.721428571428572
+"KORA metabolomics","LEOPARD","Balanced Accuracy",0.659325396825397
+"KORA metabolomics","missForest","Balanced Accuracy",0.506150793650794
+"KORA metabolomics","PMM","Balanced Accuracy",0.511111111111111
+"KORA metabolomics","LM","Balanced Accuracy",0.531746031746032
+"KORA metabolomics","cGAN","F1 Score",0.204081632653061
+"KORA metabolomics","observed","F1 Score",0.439024390243902
+"KORA metabolomics","LEOPARD","F1 Score",0.357541899441341
+"KORA metabolomics","missForest","F1 Score",0.184049079754601
+"KORA metabolomics","PMM","F1 Score",0.14
+"KORA metabolomics","LM","F1 Score",0.18
+"KORA multi-omics","cGAN","Sensitivity",0.5
+"KORA multi-omics","observed","Sensitivity",0.777777777777778
+"KORA multi-omics","LEOPARD","Sensitivity",0.666666666666667
+"KORA multi-omics","missForest","Sensitivity",0.583333333333333
+"KORA multi-omics","PMM","Sensitivity",0.666666666666667
+"KORA multi-omics","LM","Sensitivity",0.611111111111111
+"KORA multi-omics","cGAN","Specificity",0.545454545454545
+"KORA multi-omics","observed","Specificity",0.778409090909091
+"KORA multi-omics","LEOPARD","Specificity",0.664772727272727
+"KORA multi-omics","missForest","Specificity",0.5625
+"KORA multi-omics","PMM","Specificity",0.494318181818182
+"KORA multi-omics","LM","Specificity",0.5625
+"KORA multi-omics","cGAN","Precision",0.183673469387755
+"KORA multi-omics","observed","Precision",0.417910447761194
+"KORA multi-omics","LEOPARD","Precision",0.289156626506024
+"KORA multi-omics","missForest","Precision",0.214285714285714
+"KORA multi-omics","PMM","Precision",0.212389380530973
+"KORA multi-omics","LM","Precision",0.222222222222222
+"KORA multi-omics","cGAN","Balanced Accuracy",0.522727272727273
+"KORA multi-omics","observed","Balanced Accuracy",0.778093434343434
+"KORA multi-omics","LEOPARD","Balanced Accuracy",0.665719696969697
+"KORA multi-omics","missForest","Balanced Accuracy",0.572916666666667
+"KORA multi-omics","PMM","Balanced Accuracy",0.580492424242424
+"KORA multi-omics","LM","Balanced Accuracy",0.586805555555556
+"KORA multi-omics","cGAN","F1 Score",0.26865671641791
+"KORA multi-omics","observed","F1 Score",0.543689320388349
+"KORA multi-omics","LEOPARD","F1 Score",0.403361344537815
+"KORA multi-omics","missForest","F1 Score",0.313432835820895
+"KORA multi-omics","PMM","F1 Score",0.322147651006711
+"KORA multi-omics","LM","F1 Score",0.325925925925926
