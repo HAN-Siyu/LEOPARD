@@ -7,14 +7,11 @@ from src.train import TrainLEOPARD
 
 trainNum = "all"
 for obsNum in [0, 25, 50, 100]:
-    loaded_data = prepare_dataset(data_dir="data/MGH_COVID", valSet_ratio=0.2, trainNum=trainNum,
-                                  obsNum=obsNum, use_scaler="standard", set_seed=1,
-                                  save_data_dir="saved_idx")
+    loaded_data = prepare_dataset(data_dir="data/MGH_COVID", missTimepoint="D3",
+                                  valSet_ratio=0.2, trainNum=trainNum, obsNum=obsNum,
+                                  use_scaler="standard", save_data_dir=None, set_seed=1)
 
-    my_leopard = TrainLEOPARD(train_set=loaded_data['train_set'], val_set=loaded_data['val_set'],
-                              test_set=loaded_data['test_set'],
-                              scaler_viewA=loaded_data['scaler_viewA'], scaler_viewB=loaded_data['scaler_viewB'],
-
+    my_leopard = TrainLEOPARD(loaded_data=loaded_data,
                               pre_layers_viewA=[64], pre_layers_viewB=[64],
                               post_layers_viewA=[64], post_layers_viewB=[64],
 
@@ -25,6 +22,9 @@ for obsNum in [0, 25, 50, 100]:
                               encoder_temporal_layers=[64, 64, 64],
                               encoder_temporal_norm=['none', 'none', 'none'],
                               encoder_temporal_dropout=[0, 0, 0],
+
+                              use_projection_head=False,
+                              projection_output_size=0,
 
                               generator_block_num=3,
                               generator_norm=['none', 'none', 'none'],
@@ -43,9 +43,13 @@ for obsNum in [0, 25, 50, 100]:
 
                               lr_G=0.0005, lr_D=0.0005, b1_G=0.9, b1_D=0.9,
                               lr_scheduler_G='none', lr_scheduler_D='none',
+                              batch_size=16,
 
-                              use_projection_head=False, projection_output_size=0,
-                              batch_size=16, note="obsNum_" + str(obsNum))
+                              save_embedding_dir=os.path.join("lightning_logs", "trainNum_" + str(trainNum),
+                                                              "obsNum_" + str(obsNum),
+                                                              "disentangled_embeddings"),
+                              save_embedding_every_n_epoch=10,
+                              note="obsNum_" + str(obsNum))
 
     save_dir = os.path.join("lightning_logs", "trainNum_" + str(trainNum))
     name = "obsNum_" + str(obsNum)
