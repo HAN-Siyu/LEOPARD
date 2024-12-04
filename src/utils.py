@@ -27,7 +27,7 @@ def compute_percent_bias(generated_data_numpy, observed_data_numpy, scaler):
     generated_recover = scaler.inverse_transform(generated_data_numpy)
     observed_recover = scaler.inverse_transform(observed_data_numpy)
 
-    percentBias = np.abs(generated_recover - observed_recover) / (np.abs(observed_recover) + 1e-16)
+    percentBias = np.abs((generated_recover - observed_recover) / (observed_recover + 1e-16))
     percentBias_median_var = np.median(percentBias, axis=0)
     percentBias_median = np.median(percentBias_median_var)
     percentBias_percentile_25 = np.percentile(percentBias_median_var, 25)
