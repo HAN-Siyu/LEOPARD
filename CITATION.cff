@@ -1,0 +1,9 @@
+cff-version: 1.1.0
+message: "If you find this helpful, feel free to cite it as follows."
+authors:
+- family-names: Han
+  given-names: Siyu
+orcid: https://orcid.org/0000-0001-8709-5564
+title: LEOPARD: Missing view completion for multi-timepoint omics data via representation disentanglement and temporal knowledge transfer
+version: v1.0.0-alpha
+date-released: 2025-02-25
